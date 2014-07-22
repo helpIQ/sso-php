@@ -26,12 +26,12 @@ class Helpiq_SSO_Support {
 	// All the system is doing here is checking to see it there is a value. If there is no value require user to log in. 
 	// If there is a value pass the site parameters to  http://www.helpdocsonline.com/access/remote/ and establish a session on HelpIQ. 
 	public function helpiq_check_local_session() {
-		return isset($_SESSION['username']) && !empty($_SESSION['username']);
+		return isset($_SESSION['user_id']) && !empty($_SESSION['user_id']);
 	}
 
 	//please destroy your local session data here
 	public function helpiq_destroy_local_session() {
-		unset($_SESSION['username']);
+		unset($_SESSION['user_id']);
 	}
 
 	public function do_helpiq_authorization() {

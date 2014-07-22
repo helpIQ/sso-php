@@ -10,7 +10,7 @@
 		$password = trim($_REQUEST['password']);
 		if('demo'   == $username && 'demo!' 	== $password){
 			//establish the local loggedin session
-			$_SESSION['username'] = 1;
+			$_SESSION['user_id'] = 1;
 			if (!empty($_REQUEST['site'])) {
 				//if site parameters is not empty, redirect to remote log in URL, to establish the helpIQ session
 				header('location:'.$current_url.'/helpiq-auth.php?site='.$_REQUEST['site'].'&return_page='.$_REQUEST['return_page']);
