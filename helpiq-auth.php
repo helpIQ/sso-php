@@ -51,7 +51,7 @@ class Helpiq_SSO_Support {
 			$return_page = (string)$_REQUEST['return_page'];
 			// please check your end-user has logged in here
 			$url_params = 'site='.$site.'&return_page='.$return_page;
-			if ($logged_out && $this->helpiq_check_local_session()) {
+			if (!$logged_out && $this->helpiq_check_local_session()) {
 				// if the end-user has logged in the customer's website/web application, call HelpIQ to estbalish a session
 				$redirect_url = $this->helpiq_remote_url.'?hash='.md5($this->helpiq_api_key).'&'.$url_params;
 			} else {
