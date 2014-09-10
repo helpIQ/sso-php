@@ -41,7 +41,7 @@ class Helpiq_SSO_Support {
 		//When the Remote logout URL is empty, end-user logged out from HelpIQ site, 
 		//it will pass the logged_out parameter to tell customer's web app don't to give the end-user access again, just redirect to local login page
 		$logged_out = isset($_REQUEST['logged_out']) ? $_REQUEST['logged_out'] : false;
-		if ('logout' == $action) {
+		if ('logout' == $action || 'custom_logout' == $action) {
 			$this->helpiq_destroy_local_session();
 			$redirect_url = $this->default_login_url;
 		} else {
