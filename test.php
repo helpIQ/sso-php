@@ -6,7 +6,9 @@
 </head>
 <body>
 <div style="width:600px; margin:0 auto; padding-top:100px; text-align:center">
- <a href="http://mycompany.helpdocsonline.com/">Link to HelpIQ site</a>
+<p><a href="logout.php" title="">Log out</a></p>
+<p><br/><br/></p>
+<p><a href="http://mycompany.helpdocsonline.com/">Link to HelpIQ site</a></p>
 </div>
 </body>
 </html>
