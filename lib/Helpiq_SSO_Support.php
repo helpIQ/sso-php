@@ -40,7 +40,7 @@ class Helpiq_SSO_Support {
 
 	//logout the end-user from helpIQ, and it will redirect to your remote auth url
 	public function logout_helpiq(){
-		unset($_SESSION['user_id']);
+		$this->helpiq_destroy_local_session();
 		$logout_url = $this->helpiq_remote_url.'logout/?site='.$this->custom_helpiq_site;
 		header('location:'.$logout_url);
 		exit;
