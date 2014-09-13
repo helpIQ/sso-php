@@ -38,7 +38,7 @@ class Helpiq_SSO_Support {
 		unset($_SESSION['user_id']);
 	}
 
-	//logout the end-user from helpIQ, and it will redirect to your remote auth url
+	//logout the end-user from helpIQ, and it will redirect to your auth url
 	public function logout_helpiq(){
 		$this->helpiq_destroy_local_session();
 		$logout_url = $this->helpiq_remote_url.'logout/?site='.$this->custom_helpiq_site;
@@ -47,10 +47,10 @@ class Helpiq_SSO_Support {
 	}
 
 	public function do_helpiq_authorization() {
-		//If Remote logout URL is entered in HelpIQ the 'log-out' link can destroy the end-users session in HelpIQ and the session on your web application. 
+		//If Logout URL is entered in HelpIQ the 'log-out' link can destroy the end-users session in HelpIQ and the session on your web application. 
 		$action = isset($_REQUEST['action']) ? (string)$_REQUEST['action'] : 'login';
 		$redirect_url = $this->default_login_url;
-		//When the Remote logout URL is empty, end-user logged out from HelpIQ site, 
+		//When the Logout URL is empty, end-user logged out from HelpIQ site, 
 		//it will pass the logged_out parameter to tell customer's web app don't to give the end-user access again, just redirect to local login page
 		$logged_out = isset($_REQUEST['logged_out']) ? $_REQUEST['logged_out'] : false;
 		if ('logout' == $action || 'custom_logout' == $action) {
