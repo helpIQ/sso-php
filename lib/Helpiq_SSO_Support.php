@@ -2,7 +2,6 @@
 
 class Helpiq_SSO_Support {
 	
-	//Replace the API key with your HelpIQ API Key
 	private $helpiq_api_key = '';
 
 	// your local login page
@@ -11,7 +10,6 @@ class Helpiq_SSO_Support {
 	//This is the remote authenication URL to call helpIQ. Do not change.
 	private $helpiq_remote_url = 'http://www.helpdocsonline.com/access/remote/';
 
-	//your helpIQ site URL
 	private $custom_helpiq_site = '';
 
 	public function __construct($api_key, $site_url) {
@@ -71,7 +69,7 @@ class Helpiq_SSO_Support {
 			$url_params = 'site='.$site.'&return_page='.$return_page;
 			if (!$logged_out && $this->helpiq_check_local_session()) {
 				// if the end-user has logged in the customer's website/web application, call HelpIQ to estbalish a session
-				$redirect_url = $this->helpiq_remote_url.'?hash='.md5($this->helpiq_api_key).'&'.$url_params;
+				$redirect_url = $this->helpiq_remote_url.'?api_key='.md5($this->helpiq_api_key).'&'.$url_params;
 				if(!empty($site_access)) {
 					$redirect_url .= '&site_access='.$site_access;
 				}
