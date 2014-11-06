@@ -1,9 +1,11 @@
 <?php
 session_start();
 require_once('lib/Helpiq_SSO_Support.php');
-$helpiq_api_key = '9d1e2693fe4fc477cf26bc0df3372985';
-$helpiq_site_url = 'b00017.helpdocsonline.com';
 
+//enter your API key here
+$helpiq_api_key = '9d1e2693fe4fc477cf26bc0df3372985';
+//enter your site URL here
+$helpiq_site_url = 'mysite.helpdocsonline.com';
 // parameter site_access: this defines which sites are allowed, separate multiple sites by comma
 // If no value is set and the parameter is not included then we allow access to all sites. 
 // If the parameter is set, then we only allow access to whatever sites are included
