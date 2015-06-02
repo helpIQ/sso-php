@@ -50,7 +50,7 @@ class Helpiq_SSO_Support {
 	 * If the parameter is set, then we only allow access to whatever sites are included
 	 * If the user tries to go to a site they do not have permission we just take them to a site they do have permission
 	 */
-	public function do_helpiq_authorization($site_access = '') {
+	public function do_helpiq_authorization($site_access = '', $sso_params = array()) {
 		//If Logout URL is entered in HelpIQ the 'log-out' link can destroy the end-users session in HelpIQ and the session on your web application. 
 		$action = isset($_REQUEST['action']) ? (string)$_REQUEST['action'] : 'login';
 		$redirect_url = $this->default_login_url;
@@ -66,7 +66,9 @@ class Helpiq_SSO_Support {
 			//return_page is passed by helpIQ, it will redirect the end-user to a specific page HelpIQ
 			$return_page = (string)$_REQUEST['return_page'];
 			// please check your end-user has logged in here
-			$url_params = 'site='.$site.'&return_page='.$return_page;
+			$url_params = array('site' => $site, 'return_page' => $return_page);
+			$url_params = array_merge($url_params, $sso_params);
+			$url_params = http_build_query($url_params);
 			if (!$logged_out && $this->helpiq_check_local_session()) {
 				// if the end-user has logged in the customer's website/web application, call HelpIQ to estbalish a session
 				$redirect_url = $this->helpiq_remote_url.'?api_key='.md5($this->helpiq_api_key).'&'.$url_params;
